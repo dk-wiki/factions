@@ -54,7 +54,7 @@ const questions = [
 ];
 
 const Body = () => {
-  const [state, setState] = useState(10);
+  const [state, setState] = useState(0);
   const [username, setUsername] = useState('');
   const [score, setScore] = useState({ Aegis: 0, Justiciar: 0 });
   const [visible, setVisible] = useState(true);
