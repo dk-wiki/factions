@@ -17,8 +17,8 @@ const FinalResultCard = ({ score, onSelect }) => {
   };
 
   const total = score.Aegis + score.Justiciar;
-  const aegisPercentage = ((score.Aegis / total) * 100).toFixed(2);
-  const justiciarPercentage = ((score.Justiciar / total) * 100).toFixed(2);
+  const aegisPercentage = ((score.Aegis / total) * 100).toFixed(0);
+  const justiciarPercentage = ((score.Justiciar / total) * 100).toFixed(0);
 
   return (
     <div
@@ -33,21 +33,21 @@ const FinalResultCard = ({ score, onSelect }) => {
           onClick={() => handleSelect('Aegis')}
           className="faction-card aegis-card p-4 w-full md:w-1/2 text-center rounded-lg border border-red-600 transition duration-300"
         >
-          <h3 className="text-white font-bold text-xl">Aegis</h3>
-          <div className="mt-2 text-red-300 text-lg">
-            {aegisPercentage}% Aegis
-          </div>
+          <h3 className="text-white font-bold text-xl uppercase">Aegis</h3>
           <img src="Ajax.svg" alt="Aegis" className="mt-4 w-48 h-48 mx-auto" />
+          <div className="mt-2 text-red-300 text-lg">
+            {aegisPercentage}%
+          </div>
         </div>
         <div
           onClick={() => handleSelect('Justiciar')}
           className="faction-card justiciar-card p-4 w-full md:w-1/2 text-center rounded-lg border border-blue-600 transition duration-300"
         >
-          <h3 className="text-white font-bold text-xl">Justiciar</h3>
-          <div className="mt-2 text-blue-300 text-lg">
-            {justiciarPercentage}% Justiciar
-          </div>
+          <h3 className="text-white font-bold text-xl uppercase">Justiciar</h3>
           <img src="Executioner.svg" alt="Justiciar" className="mt-4 w-48 h-48 mx-auto" />
+          <div className="mt-2 text-blue-300 text-lg">
+            {justiciarPercentage}%
+          </div>
         </div>
       </div>
     </div>

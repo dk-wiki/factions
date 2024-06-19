@@ -22,6 +22,12 @@ const UsernameCard = ({ updateState }) => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSubmit();
+    }
+  };
+
   return (
     <div
       className={`p-6 max-w-md mx-auto rounded-xl bg-zinc-900 shadow-md space-y-4 border border-soft-neon-green transition-all duration-700 ${
@@ -38,6 +44,7 @@ const UsernameCard = ({ updateState }) => {
           type="text"
           value={username}
           onChange={handleChange}
+          onKeyDown={handleKeyDown}
           className="w-full border-b-0 focus:outline-none bg-transparent text-white text-center"
           placeholder="Username"
         />
