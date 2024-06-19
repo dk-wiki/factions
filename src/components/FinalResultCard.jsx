@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 const FinalResultCard = ({ score, onSelect }) => {
   const [visible, setVisible] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [selectionMade, setSelectionMade] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), 100); // Slight delay to trigger fade-in
@@ -10,10 +11,13 @@ const FinalResultCard = ({ score, onSelect }) => {
   }, []);
 
   const handleSelect = (faction) => {
-    setSubmitted(true);
-    setTimeout(() => {
-      onSelect(faction);
-    }, 500); // Reduce duration for quicker transition
+    if (!selectionMade) {
+      setSubmitted(true);
+      setSelectionMade(true);
+      setTimeout(() => {
+        onSelect(faction);
+      }, 500); // Reduce duration for quicker transition
+    }
   };
 
   const total = score.Aegis + score.Justiciar;
@@ -31,7 +35,8 @@ const FinalResultCard = ({ score, onSelect }) => {
       <div className="flex flex-col md:flex-row justify-around md:space-x-4 space-y-4 md:space-y-0 faction-container">
         <div
           onClick={() => handleSelect('Aegis')}
-          className="faction-card aegis-card p-4 w-full md:w-1/2 text-center rounded-lg border border-red-600 transition duration-300"
+          className={`faction-card aegis-card p-4 w-full md:w-1/2 text-center rounded-lg border border-red-600 transition duration-300 ${selectionMade ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
+          style={{ pointerEvents: selectionMade ? 'none' : 'auto' }}
         >
           <h3 className="text-white font-bold text-xl uppercase">Aegis</h3>
           <img src="Ajax.svg" alt="Aegis" className="mt-4 w-48 h-48 mx-auto" />
@@ -41,7 +46,8 @@ const FinalResultCard = ({ score, onSelect }) => {
         </div>
         <div
           onClick={() => handleSelect('Justiciar')}
-          className="faction-card justiciar-card p-4 w-full md:w-1/2 text-center rounded-lg border border-blue-600 transition duration-300"
+          className={`faction-card justiciar-card p-4 w-full md:w-1/2 text-center rounded-lg border border-blue-600 transition duration-300 ${selectionMade ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
+          style={{ pointerEvents: selectionMade ? 'none' : 'auto' }}
         >
           <h3 className="text-white font-bold text-xl uppercase">Justiciar</h3>
           <img src="Executioner.svg" alt="Justiciar" className="mt-4 w-48 h-48 mx-auto" />

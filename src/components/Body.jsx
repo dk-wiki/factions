@@ -54,7 +54,7 @@ const questions = [
 ];
 
 const Body = () => {
-  const [state, setState] = useState(0);
+  const [state, setState] = useState(10);
   const [username, setUsername] = useState('');
   const [score, setScore] = useState({ Aegis: 0, Justiciar: 0 });
   const [visible, setVisible] = useState(true);
@@ -83,7 +83,8 @@ const Body = () => {
   const handleFinalSelection = async (faction) => {
     console.log(`${username} selected ${faction}`);
 
-    const base64WebhookUrl = 'aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTI1Mjg2OTA3MjY3NzM3NjA2Mi9mWE14TjA3eUwxRmo0YmY1Y3hIY3Nua2ZWdkdvd2R3Skc0QWpBaGp0cy1OcWN1VUJmY0FUOE1PV191dG5oaUg2Nl9BeA==';
+    const base64WebhookUrl = process.env.REACT_APP_DISCORD_WEBHOOK_URL;
+    console.log(base64WebhookUrl);
     const webhookUrl = atob(base64WebhookUrl);
 
     const messageContent = {
