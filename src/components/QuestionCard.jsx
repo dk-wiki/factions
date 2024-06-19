@@ -21,7 +21,7 @@ const QuestionCard = ({ number, question, answer1, answer2, onSelect }) => {
       <h2 className="text-white uppercase glow text-med sm:text-lg lg:text-xl font-orbitron text-center">
         Question {number}
       </h2>
-      <p className="text-white text-center font-orbitron">{question}</p>
+      <p className="text-white text-center font-exo2">{question}</p>
       <div className="space-y-2">
         <button
           onClick={() => handleClick('Aegis')}
